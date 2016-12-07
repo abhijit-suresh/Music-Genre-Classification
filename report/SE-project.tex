@@ -1,0 +1,99 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb}
+\textheight 240mm
+\textwidth  170mm
+\oddsidemargin  0mm
+\evensidemargin 0mm
+\topmargin -20mm
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{titling}
+\usepackage{geometry}
+\usepackage{color}
+
+\geometry{ a4paper,
+	left=30mm,
+	right=30mm,
+	top=20mm,
+}
+
+\addtolength{\headheight}{0.2pt}
+%\setlength{\droptitle}{-8em} 
+
+\title{Music Genre Classification}
+\author{Abhijit Suresh, Paria Rezaeinia, Sahana Sadogopan}
+
+\begin{document}
+	\maketitle
+\begin{abstract}
+	Here goes the abstract: : \textcolor{red}{Paria}
+\end{abstract}
+	
+\section{Introduction}
+%_________________________________________________________________
+You will properly define the genre classification problem, and
+indicate a few references to the literature.
+%_________________________________________________________________
+explaining the problem, the current and common methods to solve this problem. the way that we approach it, the algorithms that we use and the reason we use these algorithms. a very brief overview of the results. The organization of the paper. : \textcolor{red}{Paria}
+\section{Dimensionality Reduction}
+%_________________________________________________________________
+Describe your dimension reduction technique, and justify why it 
+is appropriate to use it in this context. You should explain what 
+performance is expected. 
+%_________________________________________________________________
+I suggest we give some background to dimensionality reduction and also mention the Johnson-Lindestrauss theorem here. : \textcolor{red}{Sahana}
+\subsection{mfcc} \textcolor{red}{Sahana}
+
+\subsection{PCA} \textcolor{red}{Sahana}
+
+\subsection{k-means} \textcolor{red}{Abhijit}
+
+\subsection{Multidimensional Scaling} \textcolor{red}{Abhijit}
+
+\subsection{Modified Gaussian Mixture} \textcolor{red}{Paria}
+
+\section{Distance Metrics}
+Explain what are the available distance in the space of songs.
+Describe your distance and any pre-processing performed before
+computing the distance. : \textcolor{red}{Abhijit}
+%_________________________________________________________________
+\subsection{Minowski distance}\textcolor{red}{Abhijit}
+\subsection{Earth Movers distance}\textcolor{red}{Abhijit}
+\subsection{Euclidean distance}\textcolor{red}{Paria}
+\subsection{Kullback-Leibler distance (KL) distance}\textcolor{red}{Paria}
+
+\section{Statiscal learning}
+%_________________________________________________________________
+Explain how the training data help find the genre of an unknown
+song. This could be as simple as finding the closest song among all
+the songs for which you know the genre. Or it could involve more
+sophisticated methods. \textcolor{red}{Paria}
+%_________________________________________________________________
+
+\subsection{kNN}\textcolor{red}{Paria}
+
+\subsection{Modified-kNN}\textcolor{red}{Paria}
+
+\subsection{Neural Network}\textcolor{red}{Sahana}
+\section{Experiments}
+%_________________________________________________________________
+Describe the experiments, and include the confusion matrix. Discuss
+the influence of the various parameters, and describe how the optimal
+parameters were chosen. Include the computation time for your method. : \textcolor{red}{Sahana}
+%_________________________________________________________________
+\section{Discussion}
+%_________________________________________________________________
+Provide a critique of the approach and discuss any potential
+improvement. Discuss the ability of your approach to classify
+non-classical into the five remaining genres. \textcolor{red}{Abhijit}
+\begin{thebibliography}{9}
+	\bibitem{bingham} 
+	Bingham, E., Mannila, H. (2001, August). Random projection in dimensionality reduction: applications to image and text data. In Proceedings of the seventh ACM SIGKDD international conference on Knowledge discovery and data mining (pp. 245-250). ACM.
+	\bibitem{pamalk} Pampalk, E. (2006). Computational models of music similarity and their application in music information retrieval. na.
+	\bibitem{eronen} Eronen, A. (2003, July). Musical instrument recognition using ICA-based transform of features and discriminatively trained HMMs. In Signal Processing and Its Applications, 2003. Proceedings. Seventh International Symposium on (Vol. 2, pp. 133-136). IEEE.
+	\bibitem{logan} Logan, B., Salomon, A. (2001). A content-based music similarity function. Cambridge Research Labs-Tech Report.
+	\bibitem{george} George, T., Georg, E., Perry, C. (2001, October). Automatic musical genre classification of audio signals. In Proceedings of the 2nd International Symposium on Music Information Retrieval, Indiana.
+\end{thebibliography}
+\end{document}
