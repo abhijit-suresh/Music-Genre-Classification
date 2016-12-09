@@ -30,8 +30,7 @@
 
 \section{Introduction}
 
-Music genre classification is the task of classifying the given audio signal into its corresponding categorical description (a.k.a. genre). It has been a very challenging task in the field of music information retrieval (MIR) and widely used for digital music service and internet radio.  \textcolor{red}{Paria}
-
+Music genre classification is the task of classifying the given audio signal into its corresponding categorical description (a.k.a. genre). It has been a very challenging task in the field of music information retrieval (MIR) and widely used for digital music service and internet radio.
 %_________________________________________________________________
 You will properly define the genre classification problem, and
 indicate a few references to the literature.
@@ -49,9 +48,9 @@ I suggest we give some background to dimensionality reduction and also mention t
 \subsection{PCA} \textcolor{red}{Sahana}
 
 \subsection{Content based similarity}
-Beth and Ariel[1] presents a novel approach to compare songs based on their corresponding audio content. For each song in the dataset, they create a song signature. The song signature is generated based on k-means clustering of spectral features. The algorithm is summarized in figure below.
+Beth and Ariel(\ref{logan}) presents a novel approach to compare songs based on their corresponding audio content. For each song in the dataset, they create a song signature. The song signature is generated based on k-means clustering of spectral features. The algorithm is summarized in figure (\ref{content}) below.
 
-\begin{figure}[h]
+\begin{figure}[h]\label{content}
 \center
 \includegraphics{fig1.png}
 \caption{Content based similarity method}
@@ -64,9 +63,9 @@ The idea behind Johnson-Lindenstrauss lemma
 is that points in high-dimensional space can be projected onto low dimensional space while preserving the distance between the points. For a given dataset, the minimum number of dimension required to preserve the distance between the points is given by the formula $$ n > 8 * ln(m) * \epsilon ^ 2 $$ where $\epsion$ is a number between 0 and 1. For this project we have $$ n > 77$$ and hence the number of cepstrum coefficients that we have considered is 79.
 
 \subsubsection{k-Means}
-Once each frame is clustered into its corresponding we spectral representation, we cluster the frames using unsupervised k-Means clustering algorithm where the value of k is  fixed to 10. k-Means is a popular clustering algorithm used in data mining. It is often confused with k-nearest neighbour algorithm which makes use of supervised labels during the training phase in order to cluster the points. Given a set of n observations in a d dimensional space, k-Means aims to cluster the n dimension into k sets $S = {S_1,S_2,...S_k}$ where $ k \leq n$. The idea is to find the sum of distance functions of each point in the cluster to the K center. The equation is given by:
+Once each frame is clustered into its corresponding we spectral representation, we cluster the frames using unsupervised k-Means clustering algorithm where the value of k is  fixed to 10. k-Means is a popular clustering algorithm used in data mining. It is often confused with k-nearest neighbour algorithm which makes use of supervised labels during the training phase in order to cluster the points. Given a set of n observations in a d dimensional space, k-Means aims to cluster the n dimension into k sets $S = {S_1,S_2,...S_k}$ where $ k \leq n$. The idea is to find the sum of distance functions of each point in the cluster to the K center. The equation is given by (\ref{kmeans}):
 
-\begin{figure}[h]
+\begin{figure}[h]\label{kmeans}
 \center
 \includegraphics{fig2.png}
 \caption{k-Means}
@@ -109,7 +108,7 @@ Provide a critique of the approach and discuss any potential
 improvement. Discuss the ability of your approach to classify
 non-classical into the five remaining genres. \textcolor{red}{Abhijit}
 \begin{thebibliography}{9}
-	\bibitem{logan}
+	\bibitem{logan}\label{logan}
 	Logan, B., & Salomon, A. (2001). A content-based music similarity function. Cambridge Research Labs-Tech Report.
 \end{thebibliography}
 \end{document}
