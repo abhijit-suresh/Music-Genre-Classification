@@ -143,7 +143,22 @@ The kNN algorithm do not provide a good performance if the training data points 
 \subsection{Modified-kNN}
 As we mentioned in the previous section, in order to make kNN classifier more powerful we introduced the modified kNN algorithm. In the modified-kNN classifier, we normalize the number of neighbors in each genre by the frequency of that genre (the number of training points in that genre divided by the total number of training points) in the training data. This classifier can be considered a special case of weighted-kNN, where the weights are the frequency of that genre. This algorithm improves are results for genres other than classical genre, but degrades the performance for the classical genre. And, the overall accuracy of the classifier increases. 
 
-\subsection{Neural Network}\textcolor{red}{Sahana}
+\subsection{Neural Network}
+Neural Network is a machine learning algorithm that is inspired by the method the brain functions when a problem is given. The large number of neurons have so many connections that it computes many combinations and gives us the most accurate answer.
+As in the human brain as the signal goes back and forth , similarly in the neural network used of classification we have used the feedforward-back propagation.
+The neural network basically consist of three different layers
+\begin{itemize}
+  \item Input Layer
+  \item Hidden Layer
+   \item Output Layer
+\end{itemize}
+
+Below Diagram shows a basic diagram showing the layers of a Neural Network
+\begin{figure}[H]
+\includegraphics [scale=0.5]{ann.png}
+\end{figure}
+The connections between the input Layer and the hidden layer have weights that are multiplied to each connection. The weights are selected as per Gaussian values i.e they are between 0 and 1.
+The Hidden Layer also have an active function whcih could be any mathematical function. For our classification we have used Levenberg-Marquardt
 \section{Experiments}
 %_________________________________________________________________
 Describe the experiments, and include the confusion matrix. Discuss
