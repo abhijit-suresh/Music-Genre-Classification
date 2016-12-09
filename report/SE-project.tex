@@ -99,20 +99,39 @@ Minowski distance is considered as the generalization between euclidean distance
 \end{figure}
 \subsection{Earth Movers distance}\textcolor{red}{Abhijit}
 \subsection{Euclidean distance}\textcolor{red}{Paria}
-\subsection{Kullback-Leibler distance (KL) distance}\textcolor{red}{Paria}
+\subsection{Kullback-xLeibler Divergence}
+Kullback-Leibler divergence (KL) distance is a measure of distance between two given probability distributions. If $P$ and $Q$ are two probability distributions, then the KL-divergence can be written as:
 
-	\section{Statiscal learning}
-	In previous sections we discussed the projection of audio files into lower dimensional space. And we introduced the measure of distances we use to represent the distance between the new representations of the audio files. The next step is to build the classifier to these information for genre classification. We have implemented three classifiers that we explain here.
-	\subsection{k-Nearest Neighbors}
-	One of the common algorithms for classifying multi-class data is k-nearest neighbors (kNN). This algorithm simply finds the k closest data points to the testing point and determines which class owns the majority of points among these points. Therefore, the label for the testing data point would be the label of the majority of k closest data points.
-	The following figure represents the kNN algorithm for $k = 3$. There are 2 classes in this example represented with blue and red color. The testing point is the black circle and because 2 out of 3 closest neighbors are in blue, the classifier will assign it to blue class.
-	\begin{figure}[H]\label{kNN}
-		\centering
-		\includegraphics[width=.8\linewidth]{kNN.jpg}
-		\caption{k-nearest neighbors}
-	\end{figure}
+\begin{equation}\label{KLdist}
+D_{KL}(P||Q) = H(P,Q) - H(P)
+\end{equation}
+In this equation, $H(P,Q)$ is the cross entropy of the two probability distributions, and $H(P)$ is the entropy of $P$. \\
+For discrete probability distributions, the KL-divergence is given as the following equation:
+\begin{equation}\label{KLdist}
+D_{KL}(P||Q) = \sum_i P(i) log \frac{P(i)}{Q(i)}
+\end{equation}
+Therefore, the KL distance is a measure of the information loss in estimating probability distribution $P$ with probability distribution $Q$. As you can see from equation (\ref{KLdist}) this distance is not a symmetric distance. The following figure shows the distance matrix for our data set using modified Gaussian mixture model and KL-divergence as distance metric.
+\begin{figure}[H]\label{KLDiv}
+	\centering
+	\includegraphics[width=1\linewidth]{KLDiv.jpg}
+	\caption{KL distance matrix}
+\end{figure}
+In this distance matrix, we can see the genre classes that we have as squares around the main diagonal of the matrix. But, there is also small distance across multiple genres. For example, we can see small distance between the songs in the classical genre and the songs in the world genre.
+\section{Statiscal learning}
+In previous sections we discussed the projection of audio files into lower dimensional space. And we introduced the measure of distances we use to represent the distance between the new representations of the audio files. The next step is to build the classifier to these information for genre classification. We have implemented three classifiers that we explain here. 
+\subsection{k-Nearest Neighbors}
+One of the common algorithms for classifying multi-class data is k-nearest neighbors (kNN). This algorithm simply finds the k closest data points to the testing point and determines which class owns the majority of points among these points. Therefore, the label for the testing data point would be the label of the majority of k closest data points.
+The following figure represents the kNN algorithm for $k = 3$. There are 2 classes in this example represented with blue and red color. The testing point is the black circle and because 2 out of 3 closest neighbors are in blue, the classifier will assign it to the blue class.
+\begin{figure}[H]\label{kNN}
+	\centering
+	\includegraphics[width=.8\linewidth]{kNN.jpg}
+	\caption{k-nearest neighbors}
+\end{figure}
 
-\subsection{Modified-kNN}\textcolor{red}{Paria}
+The kNN algorithm do not provide a good performance if the training data points are not distributed uniformly among the classes. In this project we are using 729 songs, which contains 320 classical, 115 electronics, 26 jazz-blues, 45 metal-punk, 101 rock-pop and 122 world genre. Therefore, 43\% of all songs are classical and so, in any neighborhood it is more probable to have more data points from classical genre than any other genre. On the other hand, there are 26 jazz-blues songs which is less than 4\%. Thus, the probability of classifying a song as a jazz-blues song using kNN classifier is very low. Therefore, the kNN does not provide a good performance for the data set that we are using. The major error using kNN is classifying non-classical songs as classical songs. It also has a 100\% error for jazz-blues genre. In order to overcome this problem we have modified the kNN algorithm to take into account the frequency of each genre. 
+
+\subsection{Modified-kNN}
+As we mentioned in the previous section, in order to make kNN classifier more powerful we introduced the modified kNN algorithm. In the modified-kNN classifier, we normalize the number of neighbors in each genre by the frequency of that genre (the number of training points in that genre divided by the total number of training points) in the training data. This classifier can be considered a special case of weighted-kNN, where the weights are the frequency of that genre. This algorithm improves are results for genres other than classical genre, but degrades the performance for the classical genre. And, the overall accuracy of the classifier increases. 
 
 \subsection{Neural Network}\textcolor{red}{Sahana}
 \section{Experiments}
