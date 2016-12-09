@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  8 DEC 2016 23:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  9 DEC 2016 06:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -389,7 +389,14 @@ File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 142.
 )
-(./SE-project.aux)
+(./SE-project.aux
+
+LaTeX Warning: Label `kmeans' multiply defined.
+
+
+LaTeX Warning: Label `KLdist' multiply defined.
+
+)
 \openout1 = `SE-project.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
@@ -404,8 +411,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
 LaTeX Font Info:    ... okay on input line 28.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
 LaTeX Font Info:    ... okay on input line 28.
-
-(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
+ (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count104
 \scratchdimen=\dimen122
@@ -513,23 +519,24 @@ Package pdftex.def Info: mfcc.png used on input line 52.
  [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 63.
 
-LaTeX Warning: Reference `logan' on page 2 undefined on input line 61.
-
-<fig1.png, id=15, 309.155pt x 322.20375pt>
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 63.
+ [2 <./mfcc.png>]
+<fig1.png, id=19, 309.155pt x 322.20375pt>
 File: fig1.png Graphic file (type png)
  <use fig1.png>
-Package pdftex.def Info: fig1.png used on input line 65.
+Package pdftex.def Info: fig1.png used on input line 75.
 (pdftex.def)             Requested size: 309.15424pt x 322.20296pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[2 <./mfcc.png>]
+ [3 <./fig1.png>]
 ! Undefined control sequence.
 <recently read> \epsion 
                         
-l.73 ...8 * ln(m) * \epsilon ^ 2 $$ where $\epsion
+l.83 ...8 * ln(m) * \epsilon ^ 2 $$ where $\epsion
                                                   $ is a number between 0 an...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -537,53 +544,71 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-<fig2.png, id=20, 223.83624pt x 56.21pt>
+<fig2.png, id=24, 223.83624pt x 56.21pt>
 File: fig2.png Graphic file (type png)
  <use fig2.png>
-Package pdftex.def Info: fig2.png used on input line 80.
+Package pdftex.def Info: fig2.png used on input line 90.
 (pdftex.def)             Requested size: 223.8357pt x 56.20985pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[3 <./fig1.png>]
-
-LaTeX Warning: Reference `dr' on page 4 undefined on input line 90.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.94 ...-dimensional point $ X = {x_1,x_2,...,x_n$
-                                                   and $ Y = {y_1,y_2,...,y_...
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-<fig3.png, id=25, 163.61125pt x 66.2475pt>
+ [4 <./fig2.png>]
+<fig3.png, id=29, 163.61125pt x 66.2475pt>
 File: fig3.png Graphic file (type png)
  <use fig3.png>
-Package pdftex.def Info: fig3.png used on input line 97.
+Package pdftex.def Info: fig3.png used on input line 107.
 (pdftex.def)             Requested size: 163.61084pt x 66.24733pt.
- [4 <./fig2.png> <./fig3.png>]
 
-LaTeX Warning: Reference `KLdist' on page 5 undefined on input line 113.
+<emd.png, id=30, 447.6725pt x 91.34125pt>
+File: emd.png Graphic file (type png)
+ <use emd.png>
+Package pdftex.def Info: emd.png used on input line 114.
+(pdftex.def)             Requested size: 223.8357pt x 45.6705pt.
 
-<KLDiv.jpg, id=31, 1124.2pt x 843.15pt>
+<emd_dist.png, id=31, 611.28375pt x 512.91624pt>
+File: emd_dist.png Graphic file (type png)
+ <use emd_dist.png>
+Package pdftex.def Info: emd_dist.png used on input line 121.
+(pdftex.def)             Requested size: 489.02766pt x 410.33356pt.
+
+Overfull \hbox (62.23631pt too wide) in paragraph at lines 121--122
+ [] 
+ []
+
+[5 <./fig3.png> <./emd.png>] <emd_scatter.png, id=37, 548.0475pt x 459.7175pt>
+File: emd_scatter.png Graphic file (type png)
+
+<use emd_scatter.png>
+Package pdftex.def Info: emd_scatter.png used on input line 127.
+(pdftex.def)             Requested size: 438.4386pt x 367.77449pt.
+
+Overfull \hbox (11.64725pt too wide) in paragraph at lines 127--128
+ [] 
+ []
+
+[6 <./emd_dist.png>] <distMat30.jpg, id=42, 1124.2pt x 843.15pt>
+File: distMat30.jpg Graphic file (type jpg)
+
+<use distMat30.jpg>
+Package pdftex.def Info: distMat30.jpg used on input line 135.
+(pdftex.def)             Requested size: 426.79135pt x 320.09155pt.
+ [7 <./emd_scatter.png>]
+<KLDiv.jpg, id=48, 1124.2pt x 843.15pt>
 File: KLDiv.jpg Graphic file (type jpg)
  <use KLDiv.jpg>
-Package pdftex.def Info: KLDiv.jpg used on input line 116.
+Package pdftex.def Info: KLDiv.jpg used on input line 152.
 (pdftex.def)             Requested size: 426.79135pt x 320.09155pt.
- [5]
-<kNN.jpg, id=36, 1124.2pt x 843.15pt>
+ [8 <./distMat30.jpg>]
+<kNN.jpg, id=53, 1124.2pt x 843.15pt>
 File: kNN.jpg Graphic file (type jpg)
  <use kNN.jpg>
-Package pdftex.def Info: kNN.jpg used on input line 127.
+Package pdftex.def Info: kNN.jpg used on input line 163.
 (pdftex.def)             Requested size: 341.43437pt x 256.07324pt.
- [6 <./KLDiv.jpg>] [7 <./kNN.jpg>]
+ [9 <./KLDiv.jpg>] [10 <./kNN.jpg>] <ann.png, id=60, 451.6875pt x 543.02875pt>
+File: ann.png Graphic file (type png)
+ <use ann.png>
+Package pdftex.def Info: ann.png used on input line 185.
+(pdftex.def)             Requested size: 225.84319pt x 271.5137pt.
+ [11 <./ann.png>]
 ! Misplaced alignment tab character &.
-l.150 	Logan, B., &
+l.205 	Logan, B., &
                     Salomon, A. (2001). A content-based music similarity fun...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -592,22 +617,19 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-[8] (./SE-project.aux)
+[12] (./SE-project.aux)
 
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3270 strings out of 493089
- 43380 string characters out of 6134842
- 112536 words of memory out of 5000000
- 6686 multiletter control sequences out of 15000+600000
+ 3316 strings out of 493089
+ 44086 string characters out of 6134842
+ 112641 words of memory out of 5000000
+ 6724 multiletter control sequences out of 15000+600000
  12403 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,8n,26p,967b,250s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,8n,26p,966b,258s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
@@ -616,10 +638,10 @@ sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
 /local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/l
 ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loca
 l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on SE-project.pdf (8 pages, 647416 bytes).
+Output written on SE-project.pdf (12 pages, 2353970 bytes).
 PDF statistics:
- 74 PDF objects out of 1000 (max. 8388607)
- 45 compressed objects within 1 object stream
+ 95 PDF objects out of 1000 (max. 8388607)
+ 53 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 

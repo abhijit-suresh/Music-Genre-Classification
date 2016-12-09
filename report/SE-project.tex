@@ -128,7 +128,13 @@ In order visualize the distance matrix as scatter plot, we use multidimensional 
 \caption{Scatter Plot}
 \end{figure}
 
-\subsection{Euclidean distance}\textcolor{red}{Paria}
+\subsection{Euclidean distance}
+Euclidean distance also known as $l^2$-norm is a common measure of distance between two points in n-dimension space. Euclidean norm is simply the magnitude of the vector. This norm is very simple to calculate. Therefore, in our experiments we start with the Euclidean norm and if the result did not provide a good performance, then we test other distance metrics relevant to the data. In addition to be simple to calculate, Euclidean distance has a good performance in a braod range of settings. The following picture represents the distance matrix using modified Guassian mixture model and Euclidean distance. 
+\begin{figure}[H]\label{distMat30}
+	\centering
+	\includegraphics[width=1\linewidth]{distMat30.jpg}
+	\caption{Euclidean distance matrix for modifed Gaussian mixture model}
+\end{figure}
 \subsection{Kullback-Leibler Divergence}
 Kullback-Leibler divergence (KL) distance is a measure of distance between two given probability distributions. If $P$ and $Q$ are two probability distributions, then the KL-divergence can be written as:
 
