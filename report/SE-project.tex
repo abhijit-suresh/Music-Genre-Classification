@@ -38,13 +38,26 @@ indicate a few references to the literature.
 explaining the problem, the current and common methods to solve this problem. the way that we approach it, the algorithms that we use and the reason we use these algorithms. a very brief overview of the results. The organization of the paper. : \textcolor{red}{Paria}
 \section{Dimensionality Reduction}
 %_________________________________________________________________
-Describe your dimension reduction technique, and justify why it
-is appropriate to use it in this context. You should explain what
-performance is expected.
+For analysis and training of our data we need to initially sample the songs . After the sampling of the given data set  ,the dimension of the data set is too large to classify them into different genre. When the dimension is enormously huge the data becomes sparse as the volume increase. This is known as the curse for dimensionality. Hence a Dimensionality reduction on the sampled dataset has to be performed to classify it genre. As the dimensionality is reduced we can use different clasiification methods. There is a certain limit to which dimensionality can be reduced without loosing important data. Johnson Lindestrauss Therom provides us with the limit to which the dimension can be reduced.
+Johnson Lindestrauss states that considering n points in space of dimension $R^n$  where d is really large. The Dimension of my space can be reduced to 
+\begin{align}
+\begin{split}
+k=o(log n)/\epsilon^2
+\end{split}
+\end{align}
+The mutual distance between the pair of points is within the factor of $1\pm \epsilon$. This is the minimum dimension to which the data set can be reduced without major data lost.By using this theorem we use a $dxn$ matrice which maps the poins from $R^n$ space to a lower dimension of $dxn$ .
+when we apply Johnson Lindestrauss to our current data set of 729 songs sample in space , we get that the minimum dimension to which we can reduce the dimensionality is 79.
 %_________________________________________________________________
-I suggest we give some background to dimensionality reduction and also mention the Johnson-Lindestrauss theorem here. : \textcolor{red}{Sahana}
-\subsection{mfcc} \textcolor{red}{Sahana}
-
+\subsection{mfcc} 
+The First dimensionality reduction technqiue that we used in MFCC (Mel Frequency Cepstrum Coefficient). In Mel Frequency Ceptrum the frequency bands are equally spaced in mel space which is approximated by the human auditory system clearly,this frequency system allows for better representation of song.
+The MFCC coefficient follows a sequence of steps through which the coefficients are found.
+The diagram below shows the sequence of steps in the generation of the mfcc coefficient.
+\begin{figure}[H]
+\includegraphics [scale=0.5]{mfcc.png}
+\end{figure}
+In the above figure as shown after the signal is sampled , first the fourier transformation is performed and the spectrum obtained is passed through the Mel Scale Filter. The output that we obtain is the Mel Frequency spectrum.
+The log of the result is taken and a discrete Fourier transform is applied to the signal the result of this is the Mel Frequency Coefficient.
+After performing the MFCC we have the signal saperated into different slots and each slots contain a the feature vectors. As suggested by johnson Lindestrauss we have taken 79 features per slot.The number of slots changes acoording to the length of the song. 
 \subsection{PCA} \textcolor{red}{Sahana}
 
 \subsection{Content based similarity}
@@ -81,21 +94,18 @@ This section provides the different types of distance metrics that we used in ou
 \subsection{Euclidean distance}\textcolor{red}{Paria}
 \subsection{Kullback-Leibler distance (KL) distance}\textcolor{red}{Paria}
 
-\section{Statiscal learning}
-In previous sections we discussed the projection of audio files into lower dimensional space. And we introduced the measure of distances we use to represent the distance between the new representations of the audio files. The next step is to build the classifier to these information for genre classification. We have implemented three classifiers that we explain here. 
-\subsection{k-Nearest Neighbors}
-One of the common algorithms for classifying multi-class data is k-nearest neighbors (kNN). This algorithm simply finds the k closest data points to the testing point and determines which class owns the majority of points among these points. Therefore, the label for the testing data point would be the label of the majority of k closest data points.
-The following figure represents the kNN algorithm for $k = 3$. There are 2 classes in this example represented with blue and red color. The testing point is the black circle and because 2 out of 3 closest neighbors are in blue, the classifier will assign it to the blue class.
-\begin{figure}[H]\label{kNN}
-	\centering
-	\includegraphics[width=.8\linewidth]{kNN.jpg}
-	\caption{k-nearest neighbors}
-\end{figure}
+	\section{Statiscal learning}
+	In previous sections we discussed the projection of audio files into lower dimensional space. And we introduced the measure of distances we use to represent the distance between the new representations of the audio files. The next step is to build the classifier to these information for genre classification. We have implemented three classifiers that we explain here.
+	\subsection{k-Nearest Neighbors}
+	One of the common algorithms for classifying multi-class data is k-nearest neighbors (kNN). This algorithm simply finds the k closest data points to the testing point and determines which class owns the majority of points among these points. Therefore, the label for the testing data point would be the label of the majority of k closest data points.
+	The following figure represents the kNN algorithm for $k = 3$. There are 2 classes in this example represented with blue and red color. The testing point is the black circle and because 2 out of 3 closest neighbors are in blue, the classifier will assign it to blue class.
+	\begin{figure}[H]\label{kNN}
+		\centering
+		\includegraphics[width=.8\linewidth]{kNN.jpg}
+		\caption{k-nearest neighbors}
+	\end{figure}
 
-The kNN algorithm do not provide a good performance if the training data points are not distributed uniformly among the classes. In this project we are using 729 songs, which contains 320 classical, 115 electronics, 26 jazz-blues, 45 metal-punk, 101 rock-pop and 122 world genre. Therefore, 43\% of all songs are classical and so, in any neighborhood it is more probable to have more data points from classical genre than any other genre. On the other hand, there are 26 jazz-blues songs which is less than 4\%. Thus, the probability of classifying a song as a jazz-blues song using kNN classifier is very low. Therefore, the kNN does not provide a good performance for the data set that we are using. The major error using kNN is classifying non-classical songs as classical songs. It also has a 100\% error for jazz-blues genre. In order to overcome this problem we have modified the kNN algorithm to take into account the frequency of each genre. 
-
-\subsection{Modified-kNN}
-As we mentioned in the previous section, in order to make kNN classifier more powerful we introduced the modified kNN algorithm. In the modified-kNN classifier, we normalize the number of neighbors in each genre by the frequency of that genre (the number of training points in that genre divided by the total number of training points) in the training data. This classifier can be considered a special case of weighted-kNN, where the weights are the frequency of that genre. This algorithm improves are results for genres other than classical genre, but degrades the performance for the classical genre. And, the overall accuracy of the classifier increases. 
+\subsection{Modified-kNN}\textcolor{red}{Paria}
 
 \subsection{Neural Network}\textcolor{red}{Sahana}
 \section{Experiments}
