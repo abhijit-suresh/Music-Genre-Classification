@@ -100,8 +100,20 @@ Once each frame is clustered into its corresponding we spectral representation, 
 \paragraph{}
 After identifying the clusters, the mean, covariance and weight is calculated for each cluster. This set of values forms the signature of the song. This signature is used in order to compare two songs.
 
-\subsection{Modified Gaussian Mixture} \textcolor{red}{Paria}
-
+\subsection{Modified Gaussian Mixture} 
+	Mixture model is a probabilistic model used in statistics in order to identify the sub-components of a probability distribution. The Gaussian mixture model (GMM) is a special case of mixture model with Gaussian sub-components. The intuition behind the mixture model is that the underlying components represent the set of hidden classes within the system. The following figure is a good representation of the Gaussian mixture model which represents the Gaussian components of a probability distribution.
+	\begin{figure}[H]\label{GMM}
+		\centering
+		\includegraphics[width=1\linewidth]{GMM.png}
+		\caption{Gaussian mixture model}
+	\end{figure}
+	The computation time for the Gaussian mixture model is more than the other methods that we tried. So, we are modifying the mixture model based on an algorithm suggested in one of the example projects. The following figure shows the steps of the algorithm.
+	\begin{figure}[H]\label{fch}
+		\centering
+		\includegraphics[width=1\linewidth]{fch.png}
+		\caption{Modified mixture model flowchart}
+	\end{figure} 
+	As you can see in the flowchart, we divide each song into smaller windows, we chose the window size of 2000 samples. Then, with moving the signal to the frequency domain, we find the dominant frequency components of the signal. Repeating that for all the segments, we find the histogram of the dominant component frequency through the entire song. Since the songs have different length, we normalize the histogram by the length of each song. This distribution is the low dimension representation of the song. And, the dimension depends on the number of bins in the histogram.
 \section{Distance Metrics}\label{sec:dist}
 This section provides the different types of distance metrics that we used in our project. Distance metric is used to quantify the distance between two different songs in the song space. However, the distance metric is valid only on a low-dimensional sub space due to curse of dimensionality. For example: Consider a hypersphere. As the number of dimension increases the volume of hypersphere tends to zero. This phenomenon is also called as concentration of measure. In such a concentrated space euclidean or any type of distance is not meaningful. Hence, before calculating the distance we need to use dimension reduction as pre-processing step. The list of techniques that we experiment with for dimension reduction is discussed in the previous section (\ref{dr}).
 
