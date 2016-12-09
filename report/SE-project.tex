@@ -83,15 +83,16 @@ computing the distance. : \textcolor{red}{Abhijit}
 \subsection{Euclidean distance}\textcolor{red}{Paria}
 \subsection{Kullback-Leibler distance (KL) distance}\textcolor{red}{Paria}
 
-\section{Statiscal learning}
-%_________________________________________________________________
-Explain how the training data help find the genre of an unknown
-song. This could be as simple as finding the closest song among all
-the songs for which you know the genre. Or it could involve more
-sophisticated methods. \textcolor{red}{Paria}
-%_________________________________________________________________
-
-\subsection{kNN}\textcolor{red}{Paria}
+	\section{Statiscal learning}
+	In previous sections we discussed the projection of audio files into lower dimensional space. And we introduced the measure of distances we use to represent the distance between the new representations of the audio files. The next step is to build the classifier to these information for genre classification. We have implemented three classifiers that we explain here. 
+	\subsection{k-Nearest Neighbors}
+	One of the common algorithms for classifying multi-class data is k-nearest neighbors (kNN). This algorithm simply finds the k closest data points to the testing point and determines which class owns the majority of points among these points. Therefore, the label for the testing data point would be the label of the majority of k closest data points.
+	The following figure represents the kNN algorithm for $k = 3$. There are 2 classes in this example represented with blue and red color. The testing point is the black circle and because 2 out of 3 closest neighbors are in blue, the classifier will assign it to blue class.
+	\begin{figure}[H]\label{kNN}
+		\centering
+		\includegraphics[width=.8\linewidth]{kNN.jpg}
+		\caption{k-nearest neighbors}
+	\end{figure}
 
 \subsection{Modified-kNN}\textcolor{red}{Paria}
 
