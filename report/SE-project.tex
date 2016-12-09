@@ -29,7 +29,7 @@
 	\maketitle
 
 \section{Introduction}
-Music genre classification is the task of classifying the given audio signal into its corresponding categorical description (a.k.a. genre). It has been a very challenging task in the field of music information retrieval (MIR) and widely used for digital music service and internet radio. Music applications such as Shazam identify a song based on a part of the song. The goal of this project is to design a classifier that listens to a song and finds the genre of the song. 
+Music genre classification is the task of classifying the given audio signal into its corresponding categorical description (a.k.a. genre). It has been a very challenging task in the field of music information retrieval (MIR) and widely used for digital music service and internet radio. Music applications such as Shazam identify a song based on a part of the song. The goal of this project is to design a classifier that listens to a song and finds the genre of the song.
 
 The data set we are using for this project is the data set from the website of the 5th International Conference on Music Information Retrieval (ISMIR2004), and it is available in Pulse Coded Modulation (PCM). There are a total of 729 songs. The number of songs in each genre is as follows:
 \begin{itemize}
@@ -108,7 +108,7 @@ This section provides the different types of distance metrics that we used in ou
 
 \subsection{Minowski}
 Minowski distance is considered as the generalization between euclidean distance and manhattan distance. This distance metric is used along with k-nearest neighbour for classification of points for songs which was reduced by content based similarity method. The reason why we used Minowski distance over other distance metric is based on experimentation. The distance between two n-dimensional point $ X = {x_1,x_2,...,x_n}$ and $ Y = {y_1,y_2,...,y_n} $ is calculated as:
-\begin{figure}[h]\label{kmeans}
+\begin{figure}[h]\label{minowski}
 \center
 \includegraphics{fig3.png}
 \caption{Minowski distance}
@@ -203,8 +203,10 @@ The neural network has three contributing factor that changes the efficiency of 
    \end{itemize}
  The Back propagation method is the learning algorithm used, in this algorithm we calculate the error when the synoptic weights are chosen randomly and calculate back the weights. By this method the error is reduced by calculating back the synoptic weights.\\
  The neural network used in this project is shown below
- \begin{figure}[H]
-\includegraphics [scale=0.5]{NeuralNetwork.png}
+\begin{figure}[H]
+\center
+\includegraphics [scale=0.5]{neuralnet.png}
+\caption{Neural network model}
 \end{figure}
 The input given is 20 features for each song and this is passed to hidden layer that contains 10 neurons and finally classifies the input to 6 genres.
 
@@ -216,34 +218,44 @@ parameters were chosen. Include the computation time for your method.
 The general idea for genre classification is first Dimensionality Reduction, finding the distance matrix and then classifying the genres.
 Hence in this project we used various dimensionality reductions such as MFCC,PCA,Modified Gaussian Mixture Model and Content based similarity. Decreasing the dimension is a crucial in genre classification as it avoids dimensionality curse.
 In this project we tried a different set of combinations of the dimensionality reduction,distance calculation and classification methods.
-The distance matrix is calculated for all the methods.\\ 
-The confusion matrix for all the methods are shown below. First is the result of the Signature method Dimensionality reduction for which the distance is calculated through Earth mover distance method and classified into genre using KNN Classification.
- \begin{figure}[H]
+The distance matrix is calculated for all the methods.\\
+The confusion matrix for all the methods are shown below. First is the result of the Signature method (content based similarity) Dimensionality reduction for which the distance is calculated through Earth mover distance method and classified into genre using KNN Classification.
+\begin{figure}[H]
+\center
 \includegraphics [scale=0.35]{results1.png}
+\caption{Confusion Matrix for Content based similarity approach}
 \end{figure}
 The average accuracy for this method was 54. \\
 The second method that was performed was using Modified Gaussian mixture with euclidean distance and KNN classification.The efficiency obtained for this method is $52$.
 \begin{figure}[H]
+\center
 \includegraphics [scale=0.65]{result2.png}
+\caption{Confusion Matrix for Gaussian mixture and KNN d=20 }
 \end{figure}
 We tried increasing the dimension and performed the same methods as above we can say that the efficiency increases as the dimensions are increased. Below is the confusion matrix when d=50.
 \begin{figure}[H]
+\center
 \includegraphics [scale=0.7]{result3.png}
+\caption{Confusion Matrix for Gaussian mixture and KNN d=50 }
 \end{figure}
 Next we changed the method by which the classification to obtain better classification of genre.Modified KNN method was used which gave better results as shown in the confusion matrix below.
 \begin{figure}[H]
+\center
 \includegraphics [scale=0.7]{result4.png}
+\caption{Confusion Matrix for Gaussian mixture and Modified KNN d=50 }
 \end{figure}
 Finally the basic method of dimensionality reduction was implemented a(MFCC and PCA),euclidean distance and neural network method of classification was performed.
 \begin{figure}[H]
+\center
 \includegraphics [scale=0.7]{result5.png}
+\caption{Confusion Matrix for Neural network }
 \end{figure}
 The input given Below is the table that shows the combination of methods we tried and their result.
 \begin{figure}[H]
+\center
 \includegraphics [scale=0.7]{table.png}
+\caption{Summary}
 \end{figure}
-We could say that our algorithms for genre classification worked fairly. If we had randomly classified our input data into classicL nd non-classical we would have got 50$\%$ accuracy. All our algorithm gave us more than $50\%$ efficiency with 6 genre classification.
-The computation time for running all,these programs were long as we had to sample and reduce dimension for 729 songs.Though Gaussian mixture model gave us the fastest results among all three. 
 %_________________________________________________________________
 \section{Discussion}\label{sec:disc}
 Music genre classification is a hard task. Our approach is three fold: Apply dimension reduction, calculate distance matrix and classify the data into its corresponding genres. For each stage, we experimented with different algorithms in an effort to achieve better accuracy across individual genres as well as overall accuracy.One of the important challenge that we encountered was the distribution of the data. The dataset has proportionately more classical songs than the other genres such as jazz or rock pop. This bias led to higher accuracy in classical and bad performance across another genres. As a solution we tried implementing modified k-nearest neighbours. Although, the accuracy improved from 57$\%$ to 63$\%$, the accuracy across classical dropped while the accuracy increased across other genres.
