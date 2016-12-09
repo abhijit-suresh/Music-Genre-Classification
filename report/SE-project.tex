@@ -59,7 +59,17 @@ In the above figure as shown after the signal is sampled , first the fourier tra
 The log of the result is taken and a discrete Fourier transform is applied to the signal the result of this is the Mel Frequency Coefficient.
 After performing the MFCC we have the signal saperated into different slots and each slots contain a the feature vectors. As suggested by johnson Lindestrauss we have taken 79 features per slot.The number of slots changes acoording to the length of the song. 
 \subsection{PCA} \textcolor{red}{Sahana}
-
+PCA(Principal Component Analysis) is a kind of linear transformation to perform dimensionality reduction of subspace. PCA reduces the dimension by projecting the d dimensional data set onto k dimensional subspace where $k<d$.
+The data that we got from MFC is passed on to PCA. The dimensionality reduction even after MFCC is quite huge to calculate the distance and classify them into different genre.
+PCA calculates direction in which variance of the data is maximum. There are few steps followed to calculate the direction of the space.
+\begin{itemize}
+  \item The data obtained from MFCC is normalised first
+  \item The mean of the normalised data is put in a matrix and the mean value for all the rows are obtained.
+  \item The variance of the data from MFCC is calculated.
+  \item The Eigen values and Eigen vectors are calculated from the covariance matrix.
+  \item The Eigen vectors are sorted in descending order in order to get the k largest eigen values.A new matrix is formed from the dominant eigen values.
+  \item Then the data set is project on this new subspace and the feature vector are organised.
+\end{itemize}
 \subsection{Content based similarity}
 Beth and Ariel(\ref{logan}) presents a novel approach to compare songs based on their corresponding audio content. For each song in the dataset, they create a song signature. The song signature is generated based on k-means clustering of spectral features. The algorithm is summarized in figure (\ref{content}) below.
 
