@@ -242,6 +242,8 @@ The input given Below is the table that shows the combination of methods we trie
 \begin{figure}[H]
 \includegraphics [scale=0.7]{table.png}
 \end{figure}
+We could say that our algorithms for genre classification worked fairly. If we had randomly classified our input data into classicL nd non-classical we would have got 50$\%$ accuracy. All our algorithm gave us more than $50\%$ efficiency with 6 genre classification.
+The computation time for running all,these programs were long as we had to sample and reduce dimension for 729 songs.Though Gaussian mixture model gave us the fastest results among all three. 
 %_________________________________________________________________
 \section{Discussion}\label{sec:disc}
 Music genre classification is a hard task. Our approach is three fold: Apply dimension reduction, calculate distance matrix and classify the data into its corresponding genres. For each stage, we experimented with different algorithms in an effort to achieve better accuracy across individual genres as well as overall accuracy.One of the important challenge that we encountered was the distribution of the data. The dataset has proportionately more classical songs than the other genres such as jazz or rock pop. This bias led to higher accuracy in classical and bad performance across another genres. As a solution we tried implementing modified k-nearest neighbours. Although, the accuracy improved from 57$\%$ to 63$\%$, the accuracy across classical dropped while the accuracy increased across other genres.
