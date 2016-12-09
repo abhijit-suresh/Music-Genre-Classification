@@ -36,28 +36,25 @@ You will properly define the genre classification problem, and
 indicate a few references to the literature.
 %_________________________________________________________________
 explaining the problem, the current and common methods to solve this problem. the way that we approach it, the algorithms that we use and the reason we use these algorithms. a very brief overview of the results. The organization of the paper. : \textcolor{red}{Paria}
-\section{Dimensionality Reduction}
+\section{Dimensionality Reduction}\label{dr}
 %_________________________________________________________________
 For analysis and training of our data we need to initially sample the songs . After the sampling of the given data set  ,the dimension of the data set is too large to classify them into different genre. When the dimension is enormously huge the data becomes sparse as the volume increase. This is known as the curse for dimensionality. Hence a Dimensionality reduction on the sampled dataset has to be performed to classify it genre. As the dimensionality is reduced we can use different clasiification methods. There is a certain limit to which dimensionality can be reduced without loosing important data. Johnson Lindestrauss Therom provides us with the limit to which the dimension can be reduced.
-Johnson Lindestrauss states that considering n points in space of dimension $R^n$  where d is really large. The Dimension of my space can be reduced to 
-\begin{align}
-\begin{split}
-k=o(log n)/\epsilon^2
-\end{split}
-\end{align}
+Johnson Lindestrauss states that considering n points in space of dimension $R^n$  where d is really large. The Dimension of my space can be reduced to $$k=o(log n)/\epsilon^2$$
 The mutual distance between the pair of points is within the factor of $1\pm \epsilon$. This is the minimum dimension to which the data set can be reduced without major data lost.By using this theorem we use a $dxn$ matrice which maps the poins from $R^n$ space to a lower dimension of $dxn$ .
 when we apply Johnson Lindestrauss to our current data set of 729 songs sample in space , we get that the minimum dimension to which we can reduce the dimensionality is 79.
 %_________________________________________________________________
-\subsection{mfcc} 
+\subsection{mfcc}
 The First dimensionality reduction technqiue that we used in MFCC (Mel Frequency Cepstrum Coefficient). In Mel Frequency Ceptrum the frequency bands are equally spaced in mel space which is approximated by the human auditory system clearly,this frequency system allows for better representation of song.
 The MFCC coefficient follows a sequence of steps through which the coefficients are found.
 The diagram below shows the sequence of steps in the generation of the mfcc coefficient.
 \begin{figure}[H]
+\center
 \includegraphics [scale=0.5]{mfcc.png}
+\caption{mfcc algorithm}
 \end{figure}
 In the above figure as shown after the signal is sampled , first the fourier transformation is performed and the spectrum obtained is passed through the Mel Scale Filter. The output that we obtain is the Mel Frequency spectrum.
 The log of the result is taken and a discrete Fourier transform is applied to the signal the result of this is the Mel Frequency Coefficient.
-After performing the MFCC we have the signal saperated into different slots and each slots contain a the feature vectors. As suggested by johnson Lindestrauss we have taken 79 features per slot.The number of slots changes acoording to the length of the song. 
+After performing the MFCC we have the signal saperated into different slots and each slots contain a the feature vectors. As suggested by johnson Lindestrauss we have taken 79 features per slot.The number of slots changes acoording to the length of the song.
 \subsection{PCA} \textcolor{red}{Sahana}
 
 \subsection{Content based similarity}
@@ -84,12 +81,22 @@ Once each frame is clustered into its corresponding we spectral representation, 
 \caption{k-Means}
 \end{figure}
 
+\paragraph{}
+After identifying the clusters, the mean, covariance and weight is calculated for each cluster. This set of values forms the signature of the song. This signature is used in order to compare two songs.
+
 \subsection{Modified Gaussian Mixture} \textcolor{red}{Paria}
 
 \section{Distance Metrics}
-This section provides the different types of distance metrics that we used in our project. Distance metric is used to quantify the distance between two different songs in the song space. However, the distance metric is valid only on a low-dimensional sub space due to curse of dimensionality. For example: Consider a hypersphere. As the number of dimension increases the volume of hypersphere tends to zero. This phenomenon is also called as concentration of measure.
+This section provides the different types of distance metrics that we used in our project. Distance metric is used to quantify the distance between two different songs in the song space. However, the distance metric is valid only on a low-dimensional sub space due to curse of dimensionality. For example: Consider a hypersphere. As the number of dimension increases the volume of hypersphere tends to zero. This phenomenon is also called as concentration of measure. In such a concentrated space euclidean or any type of distance is not meaningful. Hence, before calculating the distance we need to use dimension reduction as pre-processing step. The list of techniques that we experiment with for dimension reduction is discussed in the previous section (\ref{dr}).
 
-\subsection{Minowski distance}\textcolor{red}{Abhijit}
+
+\subsection{Minowski}
+Minowski distance is considered as the generalization between euclidean distance and manhattan distance. This distance metric is used along with k-nearest neighbour for classification of points for songs which was reduced by content based similarity method. The reason why we used Minowski distance over other distance metric is based on experimentation. The distance between two n-dimensional point $ X = {x_1,x_2,...,x_n$ and $ Y = {y_1,y_2,...,y_n} $ is calculated as:
+\begin{figure}[h]\label{kmeans}
+\center
+\includegraphics{fig3.png}
+\caption{Minowski distance}
+\end{figure}
 \subsection{Earth Movers distance}\textcolor{red}{Abhijit}
 \subsection{Euclidean distance}\textcolor{red}{Paria}
 \subsection{Kullback-Leibler distance (KL) distance}\textcolor{red}{Paria}
