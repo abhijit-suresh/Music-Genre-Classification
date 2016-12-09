@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  9 DEC 2016 06:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  9 DEC 2016 08:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -511,32 +511,48 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 29.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<mfcc.png, id=1, 729.32475pt x 334.24875pt>
-File: mfcc.png Graphic file (type png)
- <use mfcc.png>
-Package pdftex.def Info: mfcc.png used on input line 52.
-(pdftex.def)             Requested size: 364.66148pt x 167.12396pt.
- [1
-
-{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 63.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 36.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 63.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 36.
+
+
+LaTeX Warning: Reference `sec:dist' on page 1 undefined on input line 45.
+
+
+LaTeX Warning: Reference `sec:stat' on page 1 undefined on input line 45.
+
+
+LaTeX Warning: Reference `sec:exp' on page 1 undefined on input line 45.
+
+
+LaTeX Warning: Reference `sec:disc' on page 1 undefined on input line 45.
+
+[1
+
+{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+<mfcc.png, id=10, 729.32475pt x 334.24875pt>
+File: mfcc.png Graphic file (type png)
+ <use mfcc.png>
+Package pdftex.def Info: mfcc.png used on input line 59.
+(pdftex.def)             Requested size: 364.66148pt x 167.12396pt.
  [2 <./mfcc.png>]
 <fig1.png, id=19, 309.155pt x 322.20375pt>
 File: fig1.png Graphic file (type png)
  <use fig1.png>
-Package pdftex.def Info: fig1.png used on input line 75.
+Package pdftex.def Info: fig1.png used on input line 81.
 (pdftex.def)             Requested size: 309.15424pt x 322.20296pt.
- [3 <./fig1.png>]
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 ! Undefined control sequence.
 <recently read> \epsion 
                         
-l.83 ...8 * ln(m) * \epsilon ^ 2 $$ where $\epsion
+l.88 ...8 * ln(m) * \epsilon ^ 2 $$ where $\epsion
                                                   $ is a number between 0 an...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -544,71 +560,72 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-<fig2.png, id=24, 223.83624pt x 56.21pt>
+[3] <fig2.png, id=23, 223.83624pt x 56.21pt>
 File: fig2.png Graphic file (type png)
  <use fig2.png>
-Package pdftex.def Info: fig2.png used on input line 90.
+Package pdftex.def Info: fig2.png used on input line 95.
 (pdftex.def)             Requested size: 223.8357pt x 56.20985pt.
- [4 <./fig2.png>]
-<fig3.png, id=29, 163.61125pt x 66.2475pt>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[4 <./fig1.png>] <fig3.png, id=28, 163.61125pt x 66.2475pt>
 File: fig3.png Graphic file (type png)
  <use fig3.png>
-Package pdftex.def Info: fig3.png used on input line 107.
+Package pdftex.def Info: fig3.png used on input line 112.
 (pdftex.def)             Requested size: 163.61084pt x 66.24733pt.
 
-<emd.png, id=30, 447.6725pt x 91.34125pt>
+<emd.png, id=29, 447.6725pt x 91.34125pt>
 File: emd.png Graphic file (type png)
  <use emd.png>
-Package pdftex.def Info: emd.png used on input line 114.
+Package pdftex.def Info: emd.png used on input line 119.
 (pdftex.def)             Requested size: 223.8357pt x 45.6705pt.
-
-<emd_dist.png, id=31, 611.28375pt x 512.91624pt>
+ [5 <./fig2.png> <./fig3.png>] <emd_dist.png, id=35, 611.28375pt x 512.91624pt>
 File: emd_dist.png Graphic file (type png)
  <use emd_dist.png>
-Package pdftex.def Info: emd_dist.png used on input line 121.
+Package pdftex.def Info: emd_dist.png used on input line 126.
 (pdftex.def)             Requested size: 489.02766pt x 410.33356pt.
 
-Overfull \hbox (62.23631pt too wide) in paragraph at lines 121--122
+Overfull \hbox (62.23631pt too wide) in paragraph at lines 126--127
  [] 
  []
 
-[5 <./fig3.png> <./emd.png>] <emd_scatter.png, id=37, 548.0475pt x 459.7175pt>
+<emd_scatter.png, id=36, 548.0475pt x 459.7175pt>
 File: emd_scatter.png Graphic file (type png)
-
-<use emd_scatter.png>
-Package pdftex.def Info: emd_scatter.png used on input line 127.
+ <use emd_scatter.png>
+Package pdftex.def Info: emd_scatter.png used on input line 132.
 (pdftex.def)             Requested size: 438.4386pt x 367.77449pt.
 
-Overfull \hbox (11.64725pt too wide) in paragraph at lines 127--128
+Overfull \hbox (11.64725pt too wide) in paragraph at lines 132--133
  [] 
  []
 
-[6 <./emd_dist.png>] <distMat30.jpg, id=42, 1124.2pt x 843.15pt>
+[6 <./emd.png> <./emd_dist.png>] <distMat30.jpg, id=42, 1124.2pt x 843.15pt>
 File: distMat30.jpg Graphic file (type jpg)
 
 <use distMat30.jpg>
-Package pdftex.def Info: distMat30.jpg used on input line 135.
+Package pdftex.def Info: distMat30.jpg used on input line 140.
 (pdftex.def)             Requested size: 426.79135pt x 320.09155pt.
  [7 <./emd_scatter.png>]
 <KLDiv.jpg, id=48, 1124.2pt x 843.15pt>
 File: KLDiv.jpg Graphic file (type jpg)
  <use KLDiv.jpg>
-Package pdftex.def Info: KLDiv.jpg used on input line 152.
+Package pdftex.def Info: KLDiv.jpg used on input line 157.
 (pdftex.def)             Requested size: 426.79135pt x 320.09155pt.
  [8 <./distMat30.jpg>]
 <kNN.jpg, id=53, 1124.2pt x 843.15pt>
 File: kNN.jpg Graphic file (type jpg)
  <use kNN.jpg>
-Package pdftex.def Info: kNN.jpg used on input line 163.
+Package pdftex.def Info: kNN.jpg used on input line 168.
 (pdftex.def)             Requested size: 341.43437pt x 256.07324pt.
  [9 <./KLDiv.jpg>] [10 <./kNN.jpg>] <ann.png, id=60, 451.6875pt x 543.02875pt>
 File: ann.png Graphic file (type png)
  <use ann.png>
-Package pdftex.def Info: ann.png used on input line 185.
+Package pdftex.def Info: ann.png used on input line 190.
 (pdftex.def)             Requested size: 225.84319pt x 271.5137pt.
  [11 <./ann.png>]
 ! Misplaced alignment tab character &.
-l.205 	Logan, B., &
+l.210 	Logan, B., &
                     Salomon, A. (2001). A content-based music similarity fun...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -617,16 +634,70 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-[12] (./SE-project.aux)
+! Misplaced alignment tab character &.
+l.214 	Lee, C. H., Shih, J. L., Yu, K. M., &
+                                             Lin, H. S. (2009). Automatic mu...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.222 	Li, T., Ogihara, M., &
+                              Li, Q. (2003, July). A comparative study on co...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.224 	Dasgupta, S., &
+                       Gupta, A. (2003). An elementary proof of a theorem of...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.224 ...on and Lindenstrauss. Random Structures &
+                                                   Algorithms, 22(1), 60-65.
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+[12]
+! Misplaced alignment tab character &.
+l.226 	Gudise, V. G., &
+                        Venayagamoorthy, G. K. (2003, April). Comparison of ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+[13] (./SE-project.aux)
+
+LaTeX Warning: There were undefined references.
+
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3316 strings out of 493089
- 44086 string characters out of 6134842
- 112641 words of memory out of 5000000
- 6724 multiletter control sequences out of 15000+600000
+ 3329 strings out of 493089
+ 44193 string characters out of 6134842
+ 113685 words of memory out of 5000000
+ 6737 multiletter control sequences out of 15000+600000
  12403 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,8n,26p,966b,258s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -638,10 +709,10 @@ sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
 /local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/l
 ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loca
 l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on SE-project.pdf (12 pages, 2353970 bytes).
+Output written on SE-project.pdf (13 pages, 2357684 bytes).
 PDF statistics:
- 95 PDF objects out of 1000 (max. 8388607)
- 53 compressed objects within 1 object stream
+ 99 PDF objects out of 1000 (max. 8388607)
+ 56 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  56 words of extra memory for PDF output out of 10000 (max. 10000000)
 
