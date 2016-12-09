@@ -29,9 +29,9 @@
 	\maketitle
 
 \section{Introduction}
-Music genre classification is the task of classifying the given audio signal into its corresponding categorical description (a.k.a. genre). It has been a very challenging task in the field of music information retrieval (MIR) and widely used for digital music service and Internet radio. Music applications such as Shazam identify a song based on a part of the song. The goal of this project is to design a classifier that listens to a song and finds the genre of the song.
+Music genre classification is the task of classifying the given audio signal into its corresponding categorical description (a.k.a. genre). It is a very challenging task in the field of music information retrieval (MIR) and widely used for digital music service and Internet radio. For example: music applications such as Shazam identify a song based on its audio content. The goal of this project is to design a classifier that takes audio signal as input and produces its corresponding genre as the output.
 
-The data set we are using for this project is the data set from the website of the 5th International Conference on Music Information Retrieval (ISMIR2004), and it is available in Pulse Coded Modulation (PCM). There are a total of 729 songs. The number of songs in each genre is as follows:
+The data set we are using for this project is from the website of the 5th International Conference on Music Information Retrieval (ISMIR2004), and it is available in Pulse Coded Modulation (PCM). There are a total of 729 songs. The number of songs in each genre is as follows:
 \begin{itemize}
 	\item Classical: 320 songs
 	\item Electronics: 115 songs
@@ -40,19 +40,18 @@ The data set we are using for this project is the data set from the website of t
 	\item Rock-pop: 101 songs
 	\item World: 122 songs
 \end{itemize}
-The goal of this project is to train a classifier on this data that can classify any song into these 6 different genres. We have explored several approaches to this problem. In order to train and test data, we use 10-fold cross validation. Therefore, 90\% of the songs are being used for training the classifier and 10\% of the songs for testing of the classifier.
+The objective is to train a classifier on this data that can classify any song into these 6 different genres. We have explored and experimented with several approaches to this problem. In order to train and test data, we use 10-fold cross validation (i.e, 90\% of the songs are being used for training  and 10\% of the songs for testing).
 
-Our approach to this problem is consisted of 3 main components; dimensionality reduction, defining distance in the new space and statistical learning. We discuss the dimensionality reduction techniques in section \ref{dr}. Section \ref{sec:dist} talks about the different distance metrics we explored. Section \ref{sec:stat} explains the statistical learning methods we have used to classify the data. In section \ref{sec:exp} we represent the results of our approach and finally in section \ref{sec:disc} we talk about the final results and possible future works to improve our results.
+Our approach to this problem consists of 3 main components; dimensionality reduction, quantifying the distance between two songs in the reduce spaced and statistical learning. The organization of the paper is as follows: dimensionality reduction techniques are discussed in section \ref{dr} followed by section \ref{sec:dist} which explores the different distance metrics and section \ref{sec:stat} which explains the statistical learning methods we have used to classify the data. In section \ref{sec:exp} we represent the results of our approach and finally in section \ref{sec:disc} we talk about the results and future work.
 
 \section{Dimensionality Reduction}\label{dr}
 %_________________________________________________________________
-For analysis and training of our data we need to initially sample the songs . After the sampling of the given data set  ,the dimension of the data set is too large to classify them into different genre. When the dimension is enormously huge the data becomes sparse as the volume increase. This is known as the curse for dimensionality. Hence a Dimensionality reduction on the sampled dataset has to be performed to classify it genre. As the dimensionality is reduced we can use different classification methods. There is a certain limit to which dimensionality can be reduced without loosing important data. Johnson Lindenstrauss Theorem provides us with the limit to which the dimension can be reduced.
-Johnson Lindenstrauss states that considering n points in space of dimension $R^n$  where d is really large. The Dimension of my space can be reduced to $$k=o(log n)/\epsilon^2$$
-The mutual distance between the pair of points is within the factor of $1\pm \epsilon$. This is the minimum dimension to which the data set can be reduced without major data lost.By using this theorem we use a $dxn$ matrice which maps the poins from $R^n$ space to a lower dimension of $dxn$ .
-when we apply Johnson Lindenstrauss to our current data set of 729 songs sample in space , we get that the minimum dimension to which we can reduce the dimensionality is 79.
+As the first step, we need to sample the songs in order to analyze and train the data. After the sampling of the given data set, we extract features or coefficients from the sampled space. However, the number of features are represented as a point in high dimensional space. When the dimension is enormously huge, the data becomes sparse as the volume increase. This is known as the curse for dimensionality. Hence, in order to classify the data we need to reduce the number of dimensions.Once the dimensionality is reduced, we can use different classification methods.
+
+In order to tackle the curse of dimensionality, we used Johnson-Lindenstrauss lemma to decide the minimum number of dimensions. The idea behind Johnson-Lindenstrauss lemma is that points in high-dimensional space can be projected onto low dimensional space while preserving the distance between the points \cite{dasgupta}. For a given dataset, the minimum number of dimension required to preserve the distance between the points is given by the formula $$ n > 8 * ln(m) * \epsilon ^ 2 $$ where $\epsion$ is a number between 0 and 1. For this project we have $$ n > 77$$ and hence the number of cepstrum coefficients that we have considered is 79.
 %_________________________________________________________________
 \subsection{MFCC(Mel Frequency cepstrum Coefficient }
-The First dimensionality reduction technique that we used in MFCC (Mel Frequency Cepstrum Coefficient) \cite{logmfcc}. In Mel Frequency Cepstrum the frequency bands are equally spaced in mel space which is approximated by the human auditory system clearly,this frequency system allows for better representation of song.
+One of the dimensionality reduction techniques that we were interested in is MFCC (Mel Frequency Cepstrum Coefficient) \cite{logmfcc}. In Mel Frequency Cepstrum, the frequency bands are equally spaced in mel space which is approximated by the human auditory system clearly and hence this frequency system allows for better representation of song.
 The MFCC coefficient follows a sequence of steps through which the coefficients are found.
 The diagram below shows the sequence of steps in the generation of the MFCC coefficient.
 \begin{figure}[H]
@@ -60,12 +59,11 @@ The diagram below shows the sequence of steps in the generation of the MFCC coef
 \includegraphics [scale=0.5]{mfcc.png}
 \caption{mfcc algorithm}
 \end{figure}
-In the above figure as shown after the signal is sampled , first the Fourier transformation is performed and the spectrum obtained is passed through the Mel Scale Filter. The output that we obtain is the Mel Frequency spectrum.
-The log of the result is taken and a discrete Fourier transform is applied to the signal the result of this is the Mel Frequency Coefficient.
-After performing the MFCC we have the signal separated into different slots and each slots contain a the feature vectors. As suggested by Johnson Lindenstrauss we have taken 79 features per slot.The number of slots changes according to the length of the song.
+Based on the algorithm, after the signal is sampled ,  the Fourier transformation is performed and the spectrum obtained is passed through the Mel Scale Filter. The output that we obtain is in the Mel Frequency spectrum.
+The log of the result is taken and a discrete cosine transform is applied to the signal in order to obtain the Mel Frequency Coefficient.
+After performing the MFCC we have the signal separated into different frames and each frame contains a set of feature vectors. Based on Johnson Lindenstrauss we have identified 79 coefficients per frame.The number of frames changes based on the length of the song.
 \subsection{PCA}
-PCA(Principal Component Analysis) is a kind of linear transformation to perform dimensionality reduction of subspace. PCA reduces the dimension by projecting the d dimensional data set onto k dimensional subspace where $k<d$ \cite{holand}. The data that we got from MFC is passed on to PCA. The dimensionality reduction even after MFCC is quite huge to calculate the distance and classify them into different genre.
-PCA calculates direction in which variance of the data is maximum. There are few steps followed to calculate the direction of the space.
+PCA(Principal Component Analysis) is a linear transformation technique which can be used to perform dimensionality reduction. PCA reduces the dimension by projecting the d dimensional data set onto k dimensional subspace where $k<d$ \cite{holand}. The data that we obtained from MFCC is taken as the input to  PCA. This has been done as an effort to reduce the dimension further.The principal components are identified based on the variance of the data. The first principal component has the maximum variance.The algorithm is as follows:
 \begin{itemize}
   \item The data obtained from MFCC is normalised first
   \item The mean of the normalised data is put in a matrix and the mean value for all the rows are obtained.
@@ -83,44 +81,41 @@ Beth and Ariel \cite{logan} presents a novel approach to compare songs based on 
 \caption{Content based similarity method}
 \end{figure}
 
-The first setup is to divide the audio into frames. Then, each frame is converted into its corresponding spectral representation. In order to generate the spectral representation we make use of MFCC algorithm which is explained in the previous sub section. The number of cepstrum coefficients was calculated based on the Johnson-Lindenstrauss lemma.
-
-\subsubsection{Johnson-Lindenstrauss}
-The idea behind Johnson-Lindenstrauss lemma is that points in high-dimensional space can be projected onto low dimensional space while preserving the distance between the points \cite{dasgupta}. For a given dataset, the minimum number of dimension required to preserve the distance between the points is given by the formula $$ n > 8 * ln(m) * \epsilon ^ 2 $$ where $\epsion$ is a number between 0 and 1. For this project we have $$ n > 77$$ and hence the number of cepstrum coefficients that we have considered is 79.
+The first step is to divide the audio into multiple frames. Then, each frame is converted into its corresponding spectral representation. In order to generate the spectral representation we made use of MFCC algorithm which is explained in the previous sub section. The number of cepstrum coefficients was calculated based on the Johnson-Lindenstrauss lemma (n=79).
 
 \subsubsection{k-Means}
-Once each frame is clustered into its corresponding we spectral representation, we cluster the frames using unsupervised k-Means clustering algorithm where the value of k is  fixed to 10. k-Means is a popular clustering algorithm used in data mining. It is often confused with k-nearest neighbour algorithm which makes use of supervised labels during the training phase in order to cluster the points. Given a set of n observations in a d dimensional space, k-Means aims to cluster the n dimension into k sets $S = {S_1,S_2,...S_k}$ where $ k \leq n$. The idea is to find the sum of distance functions of each point in the cluster to the K center. The equation is given by (\ref{kmeans}):
+Once each frame is transformed into its corresponding spectral representation, we cluster the frames using unsupervised k-Means clustering algorithm where the value of k is fixed to 10. k-Means is a popular clustering algorithm used in data mining. It is often confused with k-nearest neighbour algorithm. Given a set of n observations in a d dimensional space, k-Means aims to cluster the n dimension into k sets $S = {S_1,S_2,...S_k}$ where $ k \leq n$. The idea is to find the sum of distance functions of each point in the cluster to the K center. The equation is given by (\ref{kmeans}):
 
 \begin{figure}[h]\label{kmeans}
 \center
-\includegraphics{fig2.png}
+\includegraphics[scale=0.8]{fig2.png}
 \caption{k-Means}
 \end{figure}
 
 \paragraph{}
 After identifying the clusters, the mean, covariance and weight is calculated for each cluster. This set of values forms the signature of the song. This signature is used in order to compare two songs.
 
-\subsection{Modified Mixture Model}
+\subsection{Mixture Model}
 Mixture model is a probabilistic model used in statistics in order to identify the sub-components of a probability distribution. The Gaussian mixture model (GMM) is a special case of mixture model with Gaussian sub-components. The intuition behind the mixture model is that the underlying components represent the set of hidden classes within the system. The following figure is a good representation of the Gaussian mixture model which represents the Gaussian components of a probability distribution.
 \begin{figure}[H]\label{GMM}
 	\centering
 	\includegraphics[width=1\linewidth]{GMM.png}
 	\caption{Gaussian mixture model}
 \end{figure}
-The computation time for the Gaussian mixture model is more than the other methods that we tried. So, we are modifying the mixture model based on an algorithm suggested in one of the example projects. The following figure shows the steps of the algorithm.
+The computation time for the Gaussian mixture model is more than the other methods that we experimented with. So, we modified the mixture model based on an algorithm suggested in one of the example projects \cite{proj}. The following figure outlines the steps of the algorithm.
 \begin{figure}[H]\label{fch}
 	\centering
 	\includegraphics[width=1.1\linewidth]{fch.png}
 	\caption{Modified mixture model flowchart}
-\end{figure} 
-As you can see in the flowchart, we divide each song into smaller windows, we chose the window size of 2000 samples. Then, with moving the signal to the frequency domain, we find the dominant frequency components of the signal. Repeating that for all the segments, we find the histogram of the dominant component frequency through the entire song. Since the songs have different length, we normalize the histogram by the length of each song. This distribution is the low dimension representation of the song. And, the dimension depends on the number of bins in the histogram.
+\end{figure}
+Based on the flowchart, we divide each song into smaller windows with the window size of 2000 samples. Then, with moving the signal to the frequency domain, we find the dominant frequency components of the signal. Repeating that for all the segments, we find the histogram of the dominant component frequency through the entire song. Since the songs have different length, we normalize the histogram by the length of each song. This distribution is the low dimension representation of the song. And, the dimension depends on the number of bins in the histogram.
 
 \section{Distance Metrics}\label{sec:dist}
 This section provides the different types of distance metrics that we used in our project. Distance metric is used to quantify the distance between two different songs in the song space. However, the distance metric is valid only on a low-dimensional sub space due to curse of dimensionality. For example: Consider a hypersphere. As the number of dimension increases the volume of hypersphere tends to zero. This phenomenon is also called as concentration of measure. In such a concentrated space euclidean or any type of distance is not meaningful. Hence, before calculating the distance we need to use dimension reduction as pre-processing step. The list of techniques that we experiment with for dimension reduction is discussed in the previous section (\ref{dr}).
 
 
 \subsection{Minowski}
-Minowski distance is considered as the generalization between euclidean distance and Manhattan distance. This distance metric is used along with k-nearest neighbour for classification of points for songs which was reduced by content based similarity method. The reason why we used Minowski distance over other distance metric is based on experimentation. The distance between two n-dimensional point $ X = {x_1,x_2,...,x_n}$ and $ Y = {y_1,y_2,...,y_n} $ is calculated as:
+Minowski distance is considered as the generalization between euclidean distance and Manhattan distance. This distance metric is used along with k-nearest neighbour for classification of points for songs which was reduced by content based similarity method. The reason why we used Minowski distance over other distance metrics is based on experimentation. The distance between two n-dimensional point $ X = {x_1,x_2,...,x_n}$ and $ Y = {y_1,y_2,...,y_n} $ is calculated as:
 \begin{figure}[h]\label{minowski}
 \center
 \includegraphics{fig3.png}
@@ -134,13 +129,13 @@ Earth Movers distance is the distance between two different probability distribu
 \caption{EMD}
 \end{figure}
 \paragraph{}
-where $f_{i,j}$ is the flow between cluster i and j and is calculated based on weight of the cluster. $d_{i,j}$ is the ground distance between the clusters. In this case euclidean distance is used as the ground distance. The numerator is denoted by the work and is normalized by the flow. The distance matrix generated by EMD is as follows:
+where $f_{i,j}$ is the flow between cluster i and j and is calculated based on weight of the cluster. $d_{i,j}$ is the ground distance between the clusters. In this case euclidean distance is used as the ground distance. The numerator of the equation is denoted by the work and is normalized by the flow. The distance matrix generated by EMD is as follows:
 \begin{figure}[H]\label{emd_dist}
 \center
 \includegraphics[scale=0.70]{emd_dist.png}
 \caption{Distance matrix using EMD}
 \end{figure}
-In order visualize the distance matrix as scatter plot, we use multidimensional scaling (MDS). MDS is a means of visualizing the level of individual classes of a dataset. In this case, the classes refer to the different genres. Based on the scatter plot we find that there are no linearly separable regions to separate once class from another. The classes seem to be correlated to each other. Hence, linear classification algorithms such as linear regression will not perform as expected.
+In order visualize the distance matrix as scatter plot, we use multidimensional scaling (MDS). MDS is a means of visualizing the level of individual classes of a dataset. In this case, the classes refer to the different genres. Based on the scatter plot we find that there are no linearly separable regions to separate once class from another. The classes seem to be non-linearly correlated to each other. Hence, linear classification algorithms such as linear regression will not perform as expected.
 \begin{figure}[H]\label{emd_scatter}
 \center
 \includegraphics[scale=0.70]{emd_scatter.png}
@@ -179,7 +174,7 @@ Therefore, the KL distance is a measure of the information loss in estimating pr
 \end{figure}
 In this distance matrix, we can see the genre classes that we have as squares around the main diagonal of the matrix. But, there is also small distance across multiple genres. For example, we can see small distance between the songs in the classical genre and the songs in the world genre.
 \section{Statistical learning}\label{sec:stat}
-In previous sections we discussed the projection of audio files into lower dimensional space. And we introduced the measure of distances we use to represent the distance between the new representations of the audio files. The next step is to build the classifier to these information for genre classification. We have implemented three classifiers that we explain here.
+In previous sections we discussed the projection of audio files into lower dimensional space. And we introduced the measure of distances we use to represent the distance between the new representations of the audio files. The next step is to build the classifier to these information for genre classification. We have implemented two classification algorithms that we explain here. One of the algorithm have two different variants.
 \subsection{k-Nearest Neighbors}
 One of the common algorithms for classifying multi-class data is k-nearest neighbors (kNN) \cite{li}. This algorithm simply finds the k closest data points to the testing point and determines which class owns the majority of points among these points. Therefore, the label for the testing data point would be the label of the majority of k closest data points.
 The following figure represents the kNN algorithm for $k = 3$. There are 2 classes in this example represented with blue and red color. The testing point is the black circle and because 2 out of 3 closest neighbors are in blue, the classifier will assign it to the blue class.
@@ -189,14 +184,14 @@ The following figure represents the kNN algorithm for $k = 3$. There are 2 class
 	\caption{k-nearest neighbors}
 \end{figure}
 
-The kNN algorithm do not provide a good performance if the training data points are not distributed uniformly among the classes. In this project we are using 729 songs, which contains 320 classical, 115 electronics, 26 jazz-blues, 45 metal-punk, 101 rock-pop and 122 world genre. Therefore, 43\% of all songs are classical and so, in any neighborhood it is more probable to have more data points from classical genre than any other genre. On the other hand, there are 26 jazz-blues songs which is less than 4\%. Thus, the probability of classifying a song as a jazz-blues song using kNN classifier is very low. Therefore, the kNN does not provide a good performance for the data set that we are using. The major error using kNN is classifying non-classical songs as classical songs. It also has a 100\% error for jazz-blues genre. In order to overcome this problem we have modified the kNN algorithm to take into account the frequency of each genre.
+The kNN algorithm do not perform well as expected due to the non-uniform distribution of songs across the 6 different genres. In this project we are using 729 songs, which contains 320 classical, 115 electronics, 26 jazz-blues, 45 metal-punk, 101 rock-pop and 122 world genre. Therefore, 43\% of all songs are classical and so, in any neighborhood is more likely to have more data points from classical genre than any other genre. On the other hand, there are 26 jazz-blues songs which is less than 4\%. Thus, the probability of classifying a song as a jazz-blues song using kNN classifier is very low. Therefore, the kNN does not provide a good performance for the data set that we are using. The major error using kNN is classifying non-classical songs as classical songs. It also has a 100\% error for jazz-blues genre. In order to overcome this problem we have modified the kNN algorithm to take into account the frequency of each genre.
 
 \subsection{Modified-kNN}
-As we mentioned in the previous section, in order to make kNN classifier more powerful we introduced the modified kNN algorithm. In the modified-kNN classifier, we normalize the number of neighbors in each genre by the frequency of that genre (the number of training points in that genre divided by the total number of training points) in the training data. This classifier can be considered a special case of weighted-kNN, where the weights are the frequency of that genre. This algorithm improves are results for genres other than classical genre, but degrades the performance for the classical genre. And, the overall accuracy of the classifier increases.
+As we mentioned in the previous section, in order to make kNN classifier more powerful we introduced the modified kNN algorithm. In the modified-kNN classifier, we normalize the number of neighbors in each genre by the frequency of that genre (the number of training points in that genre divided by the total number of training points) in the training data. This classifier can be considered a special case of weighted-kNN, where the weights are the frequency of that genre. This algorithm improves the results for genres other than classical genre, but degrades the performance for the classical genre. And, the overall accuracy of the classifier increases.
 
 \subsection{Neural Network}
-Neural Network is a machine learning algorithm that is inspired by the method the brain functions when a problem is given. The large number of neurons have so many connections that it computes many combinations and gives us the most accurate answer.
-As in the human brain as the signal goes back and forth , similarly in the neural network used of classification we have used the feedforward-back propagation.
+Neural Network is a machine learning algorithm that is inspired from the biological brain. it is amazing how different neurons in the brain wire and fire together in order to accomplish various tasks in our every day life.
+The neural architecture that we incorporate in this project is based on  feedforward-back propagation algorithm.
 The neural network basically consist of three different layers
 \begin{itemize}
   \item Input Layer
@@ -204,7 +199,7 @@ The neural network basically consist of three different layers
    \item Output Layer
 \end{itemize}
 
-Below Diagram shows a basic diagram showing the layers of a Neural Network
+The diagram below shows the different layers of a sample neural network.
 \begin{figure}[H]
 \center
 \includegraphics [scale=0.5]{ann.png}
@@ -220,7 +215,7 @@ The neural network has three contributing factor that changes the efficiency of 
   \item Active Function of the hidden layer
    \item The Learning algorithm
    \end{itemize}
- The Back propagation method is the learning algorithm used, in this algorithm we calculate the error when the synoptic weights are chosen randomly and calculate back the weights. By this method the error is reduced by calculating back the synoptic weights.\\
+The learning algorithm used is back propagation. The difference between the expected and actual output is calculated and fed back into the network in order to update the synaptic weights. Over time, the difference or error reduces and the neural network will be able to learn the task.\\
  The neural network used in this project is shown below
 \begin{figure}[H]
 \center
@@ -231,9 +226,6 @@ The input given is 20 features for each song and this is passed to hidden layer 
 
 \section{Experiments}\label{sec:exp}
 %_________________________________________________________________
-Describe the experiments, and include the confusion matrix. Discuss
-the influence of the various parameters, and describe how the optimal
-parameters were chosen. Include the computation time for your method.
 The general idea for genre classification is first Dimensionality Reduction, finding the distance matrix and then classifying the genres.
 Hence in this project we used various dimensionality reductions such as MFCC,PCA,Modified Gaussian Mixture Model and Content based similarity. Decreasing the dimension is a crucial in genre classification as it avoids dimensionality curse.
 In this project we tried a different set of combinations of the dimensionality reduction,distance calculation and classification methods.
@@ -302,5 +294,7 @@ As the next steps, we would like to try extracting features such as rhythm, modu
 	Dasgupta, S., & Gupta, A. (2003). An elementary proof of a theorem of Johnson and Lindenstrauss. Random Structures & Algorithms, 22(1), 60-65.
 	\bibitem{gudise}
 	Gudise, V. G., & Venayagamoorthy, G. K. (2003, April). Comparison of particle swarm optimization and backpropagation as training algorithms for neural networks. In Swarm Intelligence Symposium, 2003. SIS'03. Proceedings of the 2003 IEEE (pp. 110-117). IEEE.
+	\bibitem{proj}
+	http://ecee.colorado.edu/~fmeyer/class/ecen5322/example2.pdf
 \end{thebibliography}
 \end{document}
