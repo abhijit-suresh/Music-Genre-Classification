@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  8 DEC 2016 21:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  8 DEC 2016 23:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -505,22 +505,31 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 29.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<fig1.png, id=1, 309.155pt x 322.20375pt>
+<mfcc.png, id=1, 729.32475pt x 334.24875pt>
+File: mfcc.png Graphic file (type png)
+ <use mfcc.png>
+Package pdftex.def Info: mfcc.png used on input line 52.
+(pdftex.def)             Requested size: 364.66148pt x 167.12396pt.
+ [1
+
+{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+
+LaTeX Warning: Reference `logan' on page 2 undefined on input line 61.
+
+<fig1.png, id=15, 309.155pt x 322.20375pt>
 File: fig1.png Graphic file (type png)
  <use fig1.png>
-Package pdftex.def Info: fig1.png used on input line 55.
+Package pdftex.def Info: fig1.png used on input line 65.
 (pdftex.def)             Requested size: 309.15424pt x 322.20296pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[1
-
-{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+[2 <./mfcc.png>]
 ! Undefined control sequence.
 <recently read> \epsion 
                         
-l.63 ...8 * ln(m) * \epsilon ^ 2 $$ where $\epsion
+l.73 ...8 * ln(m) * \epsilon ^ 2 $$ where $\epsion
                                                   $ is a number between 0 an...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -528,45 +537,89 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-<fig2.png, id=11, 223.83624pt x 56.21pt>
+<fig2.png, id=20, 223.83624pt x 56.21pt>
 File: fig2.png Graphic file (type png)
  <use fig2.png>
-Package pdftex.def Info: fig2.png used on input line 70.
+Package pdftex.def Info: fig2.png used on input line 80.
 (pdftex.def)             Requested size: 223.8357pt x 56.20985pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[2 <./fig1.png>] <kNN.jpg, id=20, 1124.2pt x 843.15pt>
+[3 <./fig1.png>]
+
+LaTeX Warning: Reference `dr' on page 4 undefined on input line 90.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.94 ...-dimensional point $ X = {x_1,x_2,...,x_n$
+                                                   and $ Y = {y_1,y_2,...,y_...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+<fig3.png, id=25, 163.61125pt x 66.2475pt>
+File: fig3.png Graphic file (type png)
+ <use fig3.png>
+Package pdftex.def Info: fig3.png used on input line 97.
+(pdftex.def)             Requested size: 163.61084pt x 66.24733pt.
+ [4 <./fig2.png> <./fig3.png>]
+
+LaTeX Warning: Reference `KLdist' on page 5 undefined on input line 113.
+
+<KLDiv.jpg, id=31, 1124.2pt x 843.15pt>
+File: KLDiv.jpg Graphic file (type jpg)
+ <use KLDiv.jpg>
+Package pdftex.def Info: KLDiv.jpg used on input line 116.
+(pdftex.def)             Requested size: 426.79135pt x 320.09155pt.
+ [5]
+<kNN.jpg, id=36, 1124.2pt x 843.15pt>
 File: kNN.jpg Graphic file (type jpg)
  <use kNN.jpg>
-Package pdftex.def Info: kNN.jpg used on input line 91.
+Package pdftex.def Info: kNN.jpg used on input line 127.
 (pdftex.def)             Requested size: 341.43437pt x 256.07324pt.
- [3 <./fig2.png>] [4 <./kNN.jpg>]
+ [6 <./KLDiv.jpg>] [7 <./kNN.jpg>]
+! Misplaced alignment tab character &.
+l.150 	Logan, B., &
+                    Salomon, A. (2001). A content-based music similarity fun...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
 
-LaTeX Warning: Empty `thebibliography' environment on input line 115.
+[8] (./SE-project.aux)
 
-[5] (./SE-project.aux) ) 
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 3252 strings out of 493089
- 43179 string characters out of 6134842
- 112547 words of memory out of 5000000
- 6671 multiletter control sequences out of 15000+600000
+ 3270 strings out of 493089
+ 43380 string characters out of 6134842
+ 112536 words of memory out of 5000000
+ 6686 multiletter control sequences out of 15000+600000
  12403 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,7n,26p,967b,243s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmmi12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr17.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmsy10.pfb>
-Output written on SE-project.pdf (5 pages, 198880 bytes).
+ 38i,8n,26p,967b,250s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
+sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
+/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/l
+ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loca
+l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on SE-project.pdf (8 pages, 647416 bytes).
 PDF statistics:
- 54 PDF objects out of 1000 (max. 8388607)
- 34 compressed objects within 1 object stream
+ 74 PDF objects out of 1000 (max. 8388607)
+ 45 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
